@@ -12,17 +12,16 @@ const transporter = nodemailer.createTransport({
 });
 
 const mailOptions = {
-  from: "sachazaets@gmail.com",
+  from: "autocheck.cz@gmail.com",
   to: "autocheck.cz@gmail.com", // when need send email
-  subject: "Hello from Nodemailer",
-  // text: "This is a test email sent using Nodemailer.",
+  subject: "New user from form",
 };
 
-async function sendEmailToOwner({ name, email }) {
+async function sendEmailToOwner({ name, phone }) {
   return new Promise((resolve, reject) => {
     transporter.sendMail({
       ...mailOptions,
-      text: `New user submit form, name: ${name}, email: ${email}`
+      text: `New user submit form, name: ${name}, phone: ${phone}`
     }, (error, info) => {
       if (error) {
         console.error("Error sending email: ", error);

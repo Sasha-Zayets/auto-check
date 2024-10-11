@@ -3,11 +3,11 @@ const { sendEmailToOwner } = require("../services/email.service");
 
 async function sendEmailController(req, res) {
   try {
-    const { email, name } = req.body;
+    const { name, phone } = req.body;
 
-    await sendEmailToOwner({ name, email });
+    await sendEmailToOwner({ name, phone });
 
-    return res.status(200).json({ email, name });
+    return res.status(200).json({ status: "ok" });
   } catch (e) {
     logger.error(e);
     return res.status(500).json({ error: e.message || "Something went wrong" });
